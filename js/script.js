@@ -30,13 +30,21 @@ FSJS project 2 - List Filter and Pagination
        that will be passed into the parens later when you call or 
        "invoke" the function 
 ***/
+var list = document.getElementsByClassName("student-item cf");
+
 const showPage = (list, page) => {
-  list = document.getElementsByClassName("student-item cf");
+  const numOfStudents = 10; //Number of students per page.
+  //Define start and ending index variables ;
+  const startIndx = page * numOfStudents - numOfStudents;
+  const endIndx = page * numOfStudents;
   for (let i = 0; i < list.length; i++) {
     let item = list[i];
     if (item[i]++ >= list[0] && item[i]++ <= list[10]) {
       //that should be shown on the page
-      //document.write(item[i]);
+      list.style.display = "block";
+    } else {
+      //this hides the ones that shouldn't be showing on that page.
+      list.style.dislpay = "none";
     }
   }
   return item;
