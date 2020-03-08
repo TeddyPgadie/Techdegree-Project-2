@@ -29,6 +29,9 @@ const showPage = (list, page) => {
   const startIndx = page * numOfStudents - numOfStudents;
   const endIndx = page * numOfStudents;
 
+  console.log(startIndx); //undefined values atm
+  console.log(endIndx); //undefined values atm
+
   for (let i = 0; i < list.length; i++) {
     if (list[i] >= startIndx && list[i] <= endIndx) {
       //that should be shown on the page
