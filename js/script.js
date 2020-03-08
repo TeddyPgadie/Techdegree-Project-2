@@ -19,10 +19,10 @@ FSJS project 2 - List Filter and Pagination
 ***/
 
 var student = document.getElementsByClassName("student-item cf");
-var pageNumber = student.length / 10;
+var pageNumber = 0; //student.length / 10;
 pageNumber = Math.ceil(pageNumber);
 //divide the amount of student by 10
-//and use the remainder as the amount of pages
+//and round it up to a higher value.
 
 const showPage = (list, page) => {
   const numOfStudents = 10; //Number of students per page.
@@ -30,11 +30,12 @@ const showPage = (list, page) => {
   const startIndx = page * numOfStudents - numOfStudents;
   const endIndx = page * numOfStudents;
 
-  //console.log(startIndx); //undefined values atm
-  //console.log(endIndx); //undefined values atm
+  //console.log(startIndx);
+  //console.log(endIndx);
 
   for (let i = 0; i < list.length; i++) {
     if (list[i] >= startIndx && list[i] <= endIndx) {
+      console.log(list[i]);
       //that should be shown on the page
       student[i].style.display = "block";
     } else {
