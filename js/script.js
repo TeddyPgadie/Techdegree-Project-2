@@ -3,19 +3,6 @@ Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
 
-// Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
-
-/*** 
-   Add your global variables that store the DOM elements you will 
-   need to reference and/or manipulate. 
-   
-   But be mindful of which variables should be global and which 
-   should be locally scoped to one of the two main functions you're 
-   going to create. A good general rule of thumb is if the variable 
-   will only be used inside of a function, then it can be locally 
-   scoped to that function.
-***/
-
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
@@ -30,26 +17,34 @@ FSJS project 2 - List Filter and Pagination
        that will be passed into the parens later when you call or 
        "invoke" the function 
 ***/
-var list = document.getElementsByClassName("student-item cf");
+
+var student = document.getElementsByClassName("student-item cf");
+var pageNumber = student % 10;
+//divide the amount of student by 10
+//and use the remainder as the amount of pages
 
 const showPage = (list, page) => {
   const numOfStudents = 10; //Number of students per page.
-  //Define start and ending index variables ;
+  //Define start and ending index variables;
   const startIndx = page * numOfStudents - numOfStudents;
   const endIndx = page * numOfStudents;
+
   for (let i = 0; i < list.length; i++) {
-    let item = list[i];
-    if (item[i]++ >= list[0] && item[i]++ <= list[10]) {
+    if (list[i] >= startIndx && list[i] <= endIndx) {
       //that should be shown on the page
-      list.style.display = "block";
+      student[i].style.display = "block";
     } else {
       //this hides the ones that shouldn't be showing on that page.
-      list.style.dislpay = "none";
+      student[i].style.dislpay = "none";
     }
   }
-  return item;
+  console.log(list); //print list of li items.
+  console.log(page); // page is undefined ????
+  return showPage;
 };
-showPage();
+showPage(student, pageNumber);
+//Passing the values in student into the parameter list.
+
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
