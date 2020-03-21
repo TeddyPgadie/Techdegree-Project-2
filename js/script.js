@@ -1,8 +1,7 @@
 /******************************************
 Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
-******************************************/
-
+******************************************
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
@@ -20,9 +19,9 @@ FSJS project 2 - List Filter and Pagination
 
 var student = document.getElementsByClassName("student-item cf");
 var pageNumber = 1;
+const numOfStudents = 10; //Number of students per page.
 
 const showPage = (list, page) => {
-  const numOfStudents = 10; //Number of students per page.
   //Define start and ending index variables;
   const startIndx = page * numOfStudents - numOfStudents;
   const endIndx = page * numOfStudents;
@@ -39,11 +38,23 @@ const showPage = (list, page) => {
   return;
 };
 showPage(student, pageNumber);
+//Passing the values from student into the parameter list.
 
-const appendPageLinks = list => {};
+const appendPageLinks = list => {
+  //student.length -->number of list items = 54
+  //numOfStudents --> max number of items per page
+  list = Math.ceil(student.length / numOfStudents);
 
-//Passing the values in student into the parameter list.
+  //create a div
+  const newDiv = document.createElement("div");
+  //class --> "pagination" ;
+  const newContent = (document.getElementById("div").className = "pagination");
+  newContent.appendChild(); //append to .page ????
 
+  //create event listeners
+  //save button in event listeners
+};
+appendPageLinks();
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
