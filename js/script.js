@@ -47,9 +47,9 @@ const appendPageLinks = list => {
 
   //create a div
   const newDiv = document.createElement("div");
-  //class --> "pagination" ;
+  //class --> "pagination";
   const newContent = (document.getElementById("div").className = "pagination");
-  newContent.appendChild(); //append to .page ????
+  newContent.appendChild(page); //append to .page ????
 
   //create event listeners
   //save button in event listeners
