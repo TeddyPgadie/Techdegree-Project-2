@@ -40,7 +40,7 @@ const showPage = (list, page) => {
 showPage(student, pageNumber);
 //Passing the values from student into the parameter list.
 
-const appendPageLinks = list => {
+const appendPageLinks = (list) => {
   //student.length -->number of list items = 54
   //numOfStudents --> max number of items per page
   list = Math.ceil(student.length / numOfStudents);
@@ -48,8 +48,10 @@ const appendPageLinks = list => {
   //create a div
   const newDiv = document.createElement("div");
   //class --> "pagination";
-  const newContent = (document.getElementById("div").className = "pagination");
-  newContent.appendChild(page); //append to .page ????
+  newDiv.setAttribute("class", "pagination");
+  //const newContent = (document.getElementById("div").className = "pagination");
+  page.appendChild(div); //append to .page ????
+  //
 
   //create event listeners
   //save button in event listeners
