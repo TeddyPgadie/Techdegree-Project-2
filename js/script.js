@@ -54,9 +54,6 @@ const appendPageLinks = (list) => {
 
   console.log(newDiv);
 
-  //list.length = 54 / max number of items on one page = 10
-  //result = 5.4 rounded 6 is the number of LI we need nested in our ul.
-
   for (i = 1; i < 7; i++) {
     let li = document.createElement("li");
     li.innerHTML = "<a href='#'>" + i + "</a>";
