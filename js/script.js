@@ -45,13 +45,28 @@ const appendPageLinks = (list) => {
   //numOfStudents --> max number of items per page
   list = Math.ceil(student.length / numOfStudents);
 
-  //create a div
-  const newDiv = document.createElement("div");
-  //class --> "pagination";
-  newDiv.setAttribute("class", "pagination");
-  //const newContent = (document.getElementById("div").className = "pagination");
-  page.appendChild(div); //append to .page ????
-  //
+  const newDiv = document.createElement("div"); //create a div
+  newDiv.setAttribute("class", "pagination"); //give it the class --> "pagination";
+  const page = document.querySelector("div"); //define page
+  page.appendChild(newDiv); //append to .page
+  let ul = document.createElement("ul");
+  newDiv.appendChild(ul);
+
+  console.log(newDiv);
+
+  for (i = 1; i < 7; i++) {
+    let li = document.createElement("li");
+    li.innerHTML = "<a href='#'>" + i + "</a>";
+    ul.appendChild(li);
+    li.addEventListener("click", myPage());
+  }
+
+  function myPage() {
+    //showPage();
+  }
+
+  //list.length = 54 / max number of items on one page = 10
+  //result = 5.4 rounded 6 is the number of LI we need nested in our ul.
 
   //create event listeners
   //save button in event listeners
