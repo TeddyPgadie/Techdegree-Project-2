@@ -61,12 +61,15 @@ const appendPageLinks = (list) => {
     let li = document.createElement("li");
     li.innerHTML = "<a href='#'>" + i + "</a>";
     ul.appendChild(li);
-    li.addEventListener("click", myPage());
-    pageNumber = i;
-  }
+    li = document.querySelector("li");
 
-  function myPage() {
-    showPage(student, pageNumber);
+    pageNumber = li.value;
+    console.log(pageNumber);
+
+    //li.addEventListener("click", showPage(student, pageNumber));
+    document.querySelectorAll("li").addEventListener("click", (event) => {
+      showPage(student, pageNumber);
+    });
   }
 
   //create event listeners
