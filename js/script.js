@@ -52,7 +52,7 @@ const appendPageLinks = (list) => {
   let ul = document.createElement("ul");
   newDiv.appendChild(ul);
 
-  console.log(newDiv);
+  //console.log(newDiv);
 
   //list.length = 54 / max number of items on one page = 10
   //result = 5.4 rounded 6 is the number of LI we need nested in our ul.
@@ -62,10 +62,11 @@ const appendPageLinks = (list) => {
     li.innerHTML = "<a href='#'>" + i + "</a>";
     ul.appendChild(li);
     li.addEventListener("click", myPage());
+    pageNumber = i;
   }
 
   function myPage() {
-    //showPage();
+    showPage(student, pageNumber);
   }
 
   //create event listeners
