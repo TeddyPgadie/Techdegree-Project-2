@@ -1,26 +1,13 @@
 /******************************************
 Treehouse Techdegree:
+
+Developer : Teddy Gadie
 FSJS project 2 - List Filter and Pagination
-******************************************
-/*** 
-   Create the `showPage` function to hide all of the items in the 
-   list except for the ten you want to show.
+******************************************/
 
-   Pro Tips: 
-     - Keep in mind that with a list of 54 students, the last page 
-       will only display four.
-     - Remember that the first student has an index of 0.
-     - Remember that a function `parameter` goes in the parens when 
-       you initially define the function, and it acts as a variable 
-       or a placeholder to represent the actual function `argument` 
-       that will be passed into the parens later when you call or 
-       "invoke" the function 
-***/
-
-var student = document.getElementsByClassName("student-item cf");
-var pageNumber = 1;
+let student = document.getElementsByClassName("student-item cf");
+pageNumber = 1;
 const numOfStudents = 10; //Number of students per page.
-
 const showPage = (list, page) => {
   //Define start and ending index variables;
   const startIndx = page * numOfStudents - numOfStudents;
@@ -43,42 +30,36 @@ showPage(student, pageNumber);
 const appendPageLinks = (list) => {
   //student.length -->number of list items = 54
   //numOfStudents --> max number of items per page
-  list = Math.ceil(student.length / numOfStudents);
+  list = student.length / numOfStudents + 1;
 
   const newDiv = document.createElement("div"); //create a div
-  newDiv.setAttribute("class", "pagination"); //give it the class --> "pagination";
-  const page = document.querySelector("div"); //define page
+  newDiv.className = "pagination"; //give it the class --> "pagination";
+  const page = document.querySelector(".page"); //define page
   page.appendChild(newDiv); //append to .page
   let ul = document.createElement("ul");
   newDiv.appendChild(ul);
 
-  //console.log(newDiv);
-
   //list.length = 54 / max number of items on one page = 10
-  //result = 5.4 rounded 6 is the number of LI we need nested in our ul.
+  //result = 5.4 rounded 6 is the number of LI we need nested in our ul also the number of  Anchor we need nested in our LI.
 
-  for (i = 1; i < 7; i++) {
+  for (i = 1; i < list; i++) {
     let li = document.createElement("li");
-    li.innerHTML = "<a href='#'>" + i + "</a>";
+    let link = document.createElement("a");
+    link.innerHTML = "<a href='#'>";
+    link.textContent = i;
+
     ul.appendChild(li);
-    li = document.querySelector("li");
+    li.appendChild(link);
+    if (link.textContent == 1) link.className = "active"; //add a className 'active' to the first link which is the actual page.
 
-    pageNumber = li.value;
-    console.log(pageNumber);
+    link.addEventListener("click", (e) => {
+      const ActualPage = e.target.textContent; // the value in i will targeted and saved into ActualPage once the an anchor is click
+      const anchor = document.querySelectorAll("a");
+      showPage(student, ActualPage); //call the showPage function and pass in  the student and page number value saved in ActualPage.
 
-    //li.addEventListener("click", showPage(student, pageNumber));
-    document.querySelectorAll("li").addEventListener("click", (event) => {
-      showPage(student, pageNumber);
+      for (let i = 0; i < anchor.length; i++) anchor[i].className = ""; //removing the className 'active' from all anchor.
+      e.target.className = "active"; // add the className active to the single anchor fired.
     });
   }
-
-  //create event listeners
-  //save button in event listeners
 };
 appendPageLinks();
-/*** 
-   Create the `appendPageLinks function` to generate, append, and add 
-   functionality to the pagination buttons.
-***/
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
