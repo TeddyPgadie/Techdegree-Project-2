@@ -1,6 +1,6 @@
 # Techdegree-project-2
 
-A description of the project in your own words
+A description of the project 2
 
 I have been working on the project 2 of Treehouse in the TD program in which 
 I have learned about a pagination web development technique; in which it consisted 
