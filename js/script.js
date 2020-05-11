@@ -5,7 +5,7 @@ Developer : Teddy Gadie
 FSJS project 2 - List Filter and Pagination
 ******************************************/
 
-let student = document.getElementsByClassName("student-item cf");
+const student = document.getElementsByClassName("student-item cf");
 pageNumber = 1;
 const numOfStudents = 10; //Number of students per page.
 const showPage = (list, page) => {
@@ -36,14 +36,14 @@ const appendPageLinks = (list) => {
   newDiv.className = "pagination"; //give it the class --> "pagination";
   const page = document.querySelector(".page"); //define page
   page.appendChild(newDiv); //append to .page
-  let ul = document.createElement("ul");
+  const ul = document.createElement("ul");
   newDiv.appendChild(ul);
 
   //list.length = 54 / max number of items on one page = 10
   //result = 5.4 rounded 6 is the number of LI we need nested in our ul also the number of  Anchor we need nested in our LI.
 
   for (i = 1; i < list; i++) {
-    let li = document.createElement("li");
+    const li = document.createElement("li");
     let link = document.createElement("a");
     link.innerHTML = "<a href='#'>";
     link.textContent = i;
